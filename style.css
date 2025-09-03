@@ -80,3 +80,16 @@ select {
   background-position: right 10px center;
   background-size: 16px;
 }
+/* Estilo para as abas de kg */
+.kg-abas {
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;  /* Reduzindo o espaço entre as séries */
+}
+
+.kg-abas input {
+  width: 18%;  /* Reduzindo o tamanho das caixas para as abas de série */
+  padding: 5px;
+  font-size: 14px;
+  margin: 0;  /* Removendo qualquer margem extra */
+}
