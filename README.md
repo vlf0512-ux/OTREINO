@@ -1,13 +1,17 @@
-
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meu Treino</title>
+  <link rel="stylesheet" href="style.css">
+
+   <!-- Fonte do Google -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      background: #4b4858;
       padding: 20px;
       color: #333;
     }
@@ -23,7 +27,7 @@
     }
 
     .treino {
-      background: white;
+      background: rgb(51, 43, 43);
       padding: 20px;
       border-radius: 10px;
       margin-top: 15px;
@@ -103,6 +107,7 @@
 
     // Carrega treino do dia inicial
     window.onload = carregarTreino;
-  </script>
+     </script>
 </body>
 </html>
+
