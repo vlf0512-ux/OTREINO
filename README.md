@@ -52,6 +52,32 @@
       color: #fff;
       margin-top: 20px;
     }
+
+    /* Estilo para as abas de kg */
+    .kg-abas {
+      display: flex;
+      justify-content: space-between;
+      gap: 5px;
+    }
+
+    .kg-abas input {
+      width: 18%;  /* Reduzindo o tamanho das caixas para as abas de série */
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .kg-label {
+      font-size: 16px;
+      color: #fff;
+      margin-left: 5px;
+    }
+
+    .kg-value {
+      font-weight: bold;
+      font-size: 16px;
+      color: #fff;
+      display: inline-block;
+    }
   </style>
 </head>
 <body>
@@ -115,21 +141,48 @@
         
         // Exibe os exercícios dentro de cada tipo
         treinos[dia][tipo].forEach(exercicio => {
-          const pesosSalvos = localStorage.getItem(`${dia}-${exercicio}`) || "";
+          // Recupera os kg salvos das 4 séries (se existir)
+          const kg1 = localStorage.getItem(`${dia}-${exercicio}-kg1`) || "";
+          const kg2 = localStorage.getItem(`${dia}-${exercicio}-kg2`) || "";
+          const kg3 = localStorage.getItem(`${dia}-${exercicio}-kg3`) || "";
+          const kg4 = localStorage.getItem(`${dia}-${exercicio}-kg4`) || "";
+
           treinoDiv.innerHTML += `
             <div class="exercicio">
               <label>${exercicio}</label>
-              <input type="text" placeholder="PESO" value="${pesosSalvos}" 
-                onchange="salvarPeso('${dia}', '${exercicio}', this.value)">
+              <div class="kg-abas">
+                <input type="text" placeholder="Série 1" value="${kg1}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 1, this)">
+                <input type="text" placeholder="Série 2" value="${kg2}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 2, this)">
+                <input type="text" placeholder="Série 3" value="${kg3}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 3, this)">
+                <input type="text" placeholder="Série 4" value="${kg4}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)">
+              </div>
             </div>
           `;
         });
       }
     }
 
-    // Função para salvar os pesos no navegador
-    function salvarPeso(dia, exercicio, pesos) {
-      localStorage.setItem(`${dia}-${exercicio}`, pesos);
+    // Função para salvar o kg de cada série no navegador
+    function salvarKg(dia, exercicio, serie, kg) {
+      localStorage.setItem(`${dia}-${exercicio}-kg${serie}`, kg);
+    }
+
+    // Função para verificar o pressionamento da tecla Enter e salvar o kg
+    function verificaEnter(event, dia, exercicio, serie, input) {
+      if (event.key === "Enter") {
+        let valorKg = input.value.trim();
+
+        // Verifica se o valor não está vazio e se é um número
+        if (valorKg && !isNaN(valorKg)) {
+          valorKg = `${valorKg}kg`;  // Adiciona 'kg' ao número
+          input.value = valorKg;  // Exibe o valor com 'kg'
+          salvarKg(dia, exercicio, serie, input.value.replace("kg", ""));  // Salva o valor sem 'kg'
+        }
+      }
     }
 
     // Carrega o treino do dia inicial
