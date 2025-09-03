@@ -61,7 +61,7 @@
     }
 
     .kg-abas input {
-      width: 18%;  /* Reduzindo o tamanho das caixas para as abas de série */
+      width: 22%;  /* Reduzindo o tamanho das caixas para as abas de série */
       padding: 5px;
       font-size: 14px;
       margin: 0;  /* Removendo qualquer margem extra */
@@ -69,7 +69,7 @@
   </style>
 </head>
 <body>
-  <h1>TREINO SEMANAL <br>(Victor Lima)</h1>
+  <h1>TREINO SEMANAL <br>(Victor Lima Frango💩)</h1> <!-- Nome alterado para Victor Lima -->
 
   <label for="dia">Selecione o dia:</label>
   <select id="dia" onchange="carregarTreino()">
@@ -152,6 +152,7 @@
                   onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)"
                   oninput="atualizarKg('${dia}', '${exercicio}', 4, this)">
               </div>
+              <div class="kg-label">kg</div> <!-- Adicionando o "kg" separadamente -->
             </div>
           `;
         });
