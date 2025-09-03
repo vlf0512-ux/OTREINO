@@ -122,16 +122,23 @@
       }
     }
 
-    // Função para formatar e salvar o peso
-    function formatarPeso(event, dia, exercicio, rep, input) {
-      if (event.key === "Enter") {
-        let valor = input.value.replace("kg", "").trim();
-        if (valor && !isNaN(valor)) {
-          input.value = valor + " kg";
-          localStorage.setItem(`${dia}-${exercicio}-rep${rep}`, input.value);
-        }
+   // Função para formatar e salvar o peso + ir para a próxima caixinha
+function formatarPeso(event, dia, exercicio, rep, input) {
+  if (event.key === "Enter") {
+    let valor = input.value.replace("kg", "").trim();
+    if (valor && !isNaN(valor)) {
+      input.value = valor + " kg";
+      localStorage.setItem(`${dia}-${exercicio}-rep${rep}`, input.value);
+
+      // Pega a próxima caixinha dentro do mesmo exercício
+      const proximo = input.parentElement.querySelectorAll("input")[rep]; 
+      if (proximo) {
+        proximo.focus(); // move o cursor para a próxima
       }
     }
+    event.preventDefault(); // evita pular linha
+  }
+}
 
     // Carrega o treino do dia inicial
     window.onload = carregarTreino;
