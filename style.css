@@ -1,0 +1,82 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  background: linear-gradient(135deg, #4a4e55, #2a5298);
+  color: #474e48;
+}
+.treino {
+  background: rgba(71, 67, 78, 0.95);
+  padding: 20px;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #296bdd;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30,144,255,0.5);
+}
+select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #2a5298;
+  background: rgb(56, 53, 53);
+  font-weight: bold;
+}
+h1 {
+  text-align: center;
+  color: #1e3c72;
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+}
+input::placeholder {
+  color: #554f4f; /* cinza mais escuro */
+  font-style: italic; /* deixa em itálico se quiser */
+}
+label {
+  color: #2a5298; /* azul */
+  font-weight: bold;
+  font-size: 18px;
+}
+.exercicio {
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: #494747;
+  border-radius: 6px;
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #2a5298;
+  border-radius: 8px;
+  outline: none;
+  background-color: #222;  /* aqui você muda a cor do fundo */
+}
+select {
+  appearance: none;      /* remove a seta padrão (funciona na maioria) */
+  -webkit-appearance: none; /* Chrome/Safari */
+  -moz-appearance: none;    /* Firefox */
+  
+  background-color: #222;  /* fundo */
+  color: #fff;             /* cor do texto */
+  padding: 10px;
+  border: 2px solid #2a5298;
+  border-radius: 8px;
+  
+  /* adiciona espaço pro ícone */
+  padding-right: 30px;
+  
+  /* seta customizada (emoji ou SVG) */
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
