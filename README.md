@@ -42,10 +42,7 @@
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
-    }
-
-    input {
-      width: 100%;
+      color: white;
     }
 
     h3 {
@@ -53,23 +50,21 @@
       margin-top: 20px;
     }
 
-    /* Estilo para as abas de kg */
-    .kg-abas {
+    /* Caixinhas pequenas lado a lado */
+    .pesos {
       display: flex;
-      justify-content: space-between;
-      gap: 2px;  /* Reduzindo o espaço entre as séries */
+      gap: 8px;
     }
 
-    .kg-abas input {
-      width: 22%;  /* Reduzindo o tamanho das caixas para as abas de série */
+    .pesos input {
+      width: 60px;
       padding: 5px;
-      font-size: 14px;
-      margin: 0;  /* Removendo qualquer margem extra */
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <h1>TREINO SEMANAL <br>(Victor Lima Frango💩)</h1> <!-- Nome alterado para Victor Lima -->
+  <h1>TREINO SEMANAL <br>(Victor Lima)</h1>
 
   <label for="dia">Selecione o dia:</label>
   <select id="dia" onchange="carregarTreino()">
@@ -85,29 +80,14 @@
   <div id="treino" class="treino"></div>
 
   <script>
-    // Treinos organizados por tipo de treino
     const treinos = {
-      segunda: {
-        superior: ["Supino Inclinado", "Puxada Alta", "Crucifixo Máquina", "Remada Curvada", "Posterior de Ombro", "Rosca Alternada", "Tríceps Francês"],
-      },
-      terca: {
-        inferior: ["Agachamento", "Cadeira Flexora", "Cadeira Extensora", "Mesa Flexora", "Panturrilha Sentado"],
-      },
-      quarta: {
-        cardio: ["Cardio"],  // Cardio para todo o corpo
-      },
-      quinta: {
-        superior: ["Puxada Alta", "Supino Inclinado", "Cerrote", "Supino Reto", "Elevação Lateral", "Tríceps Testa", "Bíceps Sentado"],
-      },
-      sexta: {
-        inferior: ["Stiff", "Leg Press", "Cadeira Flexora", "Cadeira Extensora", "Panturrilha Em Pé"],
-      },
-      sabado: {
-        descanso: ["Descanso"],
-      },
-      domingo: {
-        descanso: ["Descanso"],
-      }
+      segunda: { superior: ["Supino Inclinado", "Puxada Alta", "Crucifixo Máquina","Remada Curvada","Posterior De Ombro","Rosca Alternada","Triceps Frances"] },
+      terca: { inferior: ["Agachamento", "Cadeira Flexora", "Cadeira Extensora","Mesa Flexora","Panturrilha Sentado"] },
+      quarta: { cardio: ["Cardio"] },
+      quinta: { superior: ["Puxada Alta","Supino Inclinado","Cerrote","Supino Reto","Elevação Lateral","Triceps Testa","Biceps Scott"] },
+      sexta: { inferior: ["Stiff","Leg Press","Cadeira Flexora","Cadeira Extensora", "Panturrilha Em Pé"] },
+      sabado: { descanso: ["Descanso"] },
+      domingo: { descanso: ["Descanso"]}
     };
 
     // Função para carregar o treino do dia
@@ -122,76 +102,34 @@
         return;
       }
 
-      // Para cada tipo de treino (superior/inferior/cardio)
-      for (const tipo in treinos[dia]) {
-        // Exibe o título (superior, inferior ou cardio)
-        treinoDiv.innerHTML += `<h3>${tipo.toUpperCase()}</h3>`;
+      // Para cada categoria de treino do dia
+      for (const categoria in treinos[dia]) {
+        treinoDiv.innerHTML += `<h3>${categoria.toUpperCase()}</h3>`;
         
-        // Exibe os exercícios dentro de cada tipo
-        treinos[dia][tipo].forEach(exercicio => {
-          // Recupera os kg salvos das 4 séries (se existir)
-          const kg1 = localStorage.getItem(`${dia}-${exercicio}-kg1`) || "";
-          const kg2 = localStorage.getItem(`${dia}-${exercicio}-kg2`) || "";
-          const kg3 = localStorage.getItem(`${dia}-${exercicio}-kg3`) || "";
-          const kg4 = localStorage.getItem(`${dia}-${exercicio}-kg4`) || "";
-
+        treinos[dia][categoria].forEach(exercicio => {
           treinoDiv.innerHTML += `
             <div class="exercicio">
               <label>${exercicio}</label>
-              <div class="kg-abas">
-                <input type="number" placeholder="Série 1" value="${kg1}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 1, this)"
-                  oninput="atualizarKg('${dia}', '${exercicio}', 1, this)">
-                <input type="number" placeholder="Série 2" value="${kg2}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 2, this)"
-                  oninput="atualizarKg('${dia}', '${exercicio}', 2, this)">
-                <input type="number" placeholder="Série 3" value="${kg3}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 3, this)"
-                  oninput="atualizarKg('${dia}', '${exercicio}', 3, this)">
-                <input type="number" placeholder="Série 4" value="${kg4}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)"
-                  oninput="atualizarKg('${dia}', '${exercicio}', 4, this)">
+              <div class="pesos">
+                ${[1,2,3,4].map(i => {
+                  const pesoSalvo = localStorage.getItem(`${dia}-${exercicio}-rep${i}`) || "";
+                  return `<input type="text" value="${pesoSalvo}" onkeydown="formatarPeso(event, '${dia}', '${exercicio}', ${i}, this)">`;
+                }).join("")}
               </div>
-              <div class="kg-label">kg</div> <!-- Adicionando o "kg" separadamente -->
             </div>
           `;
         });
       }
     }
 
-    // Função para salvar o kg de cada série no navegador
-    function salvarKg(dia, exercicio, serie, kg) {
-      localStorage.setItem(`${dia}-${exercicio}-kg${serie}`, kg);
-    }
-
-    // Função para verificar o pressionamento da tecla Enter e salvar o kg
-    function verificaEnter(event, dia, exercicio, serie, input) {
+    // Função para formatar e salvar o peso
+    function formatarPeso(event, dia, exercicio, rep, input) {
       if (event.key === "Enter") {
-        let valorKg = input.value.trim();
-
-        // Verifica se o valor não está vazio e se é um número
-        if (valorKg && !isNaN(valorKg)) {
-          valorKg = `${valorKg}kg`;  // Adiciona 'kg' ao número
-          input.value = valorKg;  // Exibe o valor com 'kg'
-          salvarKg(dia, exercicio, serie, input.value.replace("kg", ""));  // Salva o valor sem 'kg'
+        let valor = input.value.replace("kg", "").trim();
+        if (valor && !isNaN(valor)) {
+          input.value = valor + " kg";
+          localStorage.setItem(`${dia}-${exercicio}-rep${rep}`, input.value);
         }
-      }
-    }
-
-    // Função para atualizar o kg exibido no campo
-    function atualizarKg(dia, exercicio, serie, input) {
-      let valorKg = input.value.trim();
-
-      // Se o valor estiver vazio, não faça nada
-      if (valorKg === "") {
-        input.value = "";
-        return;
-      }
-
-      // Verifica se é um número
-      if (!isNaN(valorKg)) {
-        input.value = `${valorKg}kg`;  // Adiciona 'kg' ao número
-        salvarKg(dia, exercicio, serie, valorKg);  // Salva o valor numérico
       }
     }
 
