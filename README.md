@@ -66,6 +66,13 @@
       font-size: 14px;
       margin: 0;  /* Removendo qualquer margem extra */
     }
+
+    .kg-label {
+      font-size: 14px;
+      color: #fff;
+      margin-top: 5px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -140,18 +147,15 @@
               <label>${exercicio}</label>
               <div class="kg-abas">
                 <input type="number" placeholder="Série 1" value="${kg1}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 1, this)"
                   oninput="atualizarKg('${dia}', '${exercicio}', 1, this)">
                 <input type="number" placeholder="Série 2" value="${kg2}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 2, this)"
                   oninput="atualizarKg('${dia}', '${exercicio}', 2, this)">
                 <input type="number" placeholder="Série 3" value="${kg3}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 3, this)"
                   oninput="atualizarKg('${dia}', '${exercicio}', 3, this)">
                 <input type="number" placeholder="Série 4" value="${kg4}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)"
                   oninput="atualizarKg('${dia}', '${exercicio}', 4, this)">
               </div>
+              <div class="kg-label">kg</div> <!-- Adicionando o "kg" separadamente -->
             </div>
           `;
         });
@@ -161,20 +165,6 @@
     // Função para salvar o kg de cada série no navegador
     function salvarKg(dia, exercicio, serie, kg) {
       localStorage.setItem(`${dia}-${exercicio}-kg${serie}`, kg);
-    }
-
-    // Função para verificar o pressionamento da tecla Enter e salvar o kg
-    function verificaEnter(event, dia, exercicio, serie, input) {
-      if (event.key === "Enter") {
-        let valorKg = input.value.trim();
-
-        // Verifica se o valor não está vazio e se é um número
-        if (valorKg && !isNaN(valorKg)) {
-          valorKg = `${valorKg}kg`;  // Adiciona 'kg' ao número
-          input.value = valorKg;  // Exibe o valor com 'kg'
-          salvarKg(dia, exercicio, serie, input.value.replace("kg", ""));  // Salva o valor sem 'kg'
-        }
-      }
     }
 
     // Função para atualizar o kg exibido no campo
@@ -189,7 +179,6 @@
 
       // Verifica se é um número
       if (!isNaN(valorKg)) {
-        input.value = `${valorKg}kg`;  // Adiciona 'kg' ao número
         salvarKg(dia, exercicio, serie, valorKg);  // Salva o valor numérico
       }
     }
