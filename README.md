@@ -50,7 +50,7 @@
   </style>
 </head>
 <body>
-  <h1>💪 Meu Treino</h1>
+  <h1>TREINO SEMANAL <br>(Victor Lima)</h1>
 
   <label for="dia">Selecione o dia:</label>
   <select id="dia" onchange="carregarTreino()">
@@ -75,6 +75,7 @@
       sexta: ["Stiff","Leg press","Cadeira flexora","Cadeira extensora","Panturrilha em pé"],
       sabado: ["Descanso"],
       domingo: ["Descanso"]
+      
     };
 
     // Carregar treino
@@ -110,4 +111,3 @@
      </script>
 </body>
 </html>
-
