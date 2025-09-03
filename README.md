@@ -57,31 +57,19 @@
     .kg-abas {
       display: flex;
       justify-content: space-between;
-      gap: 5px;
+      gap: 2px;  /* Reduzindo o espaço entre as séries */
     }
 
     .kg-abas input {
       width: 18%;  /* Reduzindo o tamanho das caixas para as abas de série */
       padding: 5px;
       font-size: 14px;
-    }
-
-    .kg-label {
-      font-size: 16px;
-      color: #fff;
-      margin-left: 5px;
-    }
-
-    .kg-value {
-      font-weight: bold;
-      font-size: 16px;
-      color: #fff;
-      display: inline-block;
+      margin: 0;  /* Removendo qualquer margem extra */
     }
   </style>
 </head>
 <body>
-  <h1>TREINO SEMANAL <br>(Victor Lima)</h1>
+  <h1>TREINO SEMANAL <br>(Grazielle Lima Frango💩)</h1>
 
   <label for="dia">Selecione o dia:</label>
   <select id="dia" onchange="carregarTreino()">
@@ -151,14 +139,18 @@
             <div class="exercicio">
               <label>${exercicio}</label>
               <div class="kg-abas">
-                <input type="text" placeholder="Série 1" value="${kg1}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 1, this)">
-                <input type="text" placeholder="Série 2" value="${kg2}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 2, this)">
-                <input type="text" placeholder="Série 3" value="${kg3}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 3, this)">
-                <input type="text" placeholder="Série 4" value="${kg4}" 
-                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)">
+                <input type="number" placeholder="Série 1" value="${kg1}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 1, this)"
+                  oninput="atualizarKg('${dia}', '${exercicio}', 1, this)">
+                <input type="number" placeholder="Série 2" value="${kg2}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 2, this)"
+                  oninput="atualizarKg('${dia}', '${exercicio}', 2, this)">
+                <input type="number" placeholder="Série 3" value="${kg3}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 3, this)"
+                  oninput="atualizarKg('${dia}', '${exercicio}', 3, this)">
+                <input type="number" placeholder="Série 4" value="${kg4}" 
+                  onkeydown="verificaEnter(event, '${dia}', '${exercicio}', 4, this)"
+                  oninput="atualizarKg('${dia}', '${exercicio}', 4, this)">
               </div>
             </div>
           `;
@@ -182,6 +174,23 @@
           input.value = valorKg;  // Exibe o valor com 'kg'
           salvarKg(dia, exercicio, serie, input.value.replace("kg", ""));  // Salva o valor sem 'kg'
         }
+      }
+    }
+
+    // Função para atualizar o kg exibido no campo
+    function atualizarKg(dia, exercicio, serie, input) {
+      let valorKg = input.value.trim();
+
+      // Se o valor estiver vazio, não faça nada
+      if (valorKg === "") {
+        input.value = "";
+        return;
+      }
+
+      // Verifica se é um número
+      if (!isNaN(valorKg)) {
+        input.value = `${valorKg}kg`;  // Adiciona 'kg' ao número
+        salvarKg(dia, exercicio, serie, valorKg);  // Salva o valor numérico
       }
     }
 
