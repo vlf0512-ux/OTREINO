@@ -10,20 +10,23 @@
 
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #4b4858;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #4b4858, #2e2c38);
       padding: 20px;
-      color: #333;
+      color: #f0f0f0;
     }
 
     h1 {
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    select, input, button {
+    select, input {
       margin: 5px 0;
       padding: 10px;
       font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #666;
     }
 
     .treino {
@@ -31,7 +34,7 @@
       padding: 20px;
       border-radius: 10px;
       margin-top: 15px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
 
     .exercicio {
@@ -42,11 +45,11 @@
       display: block;
       margin-bottom: 5px;
       font-weight: bold;
-      color: white;
+      color: #fff;
     }
 
     h3 {
-      color: #fff;
+      color: #ffeb3b;
       margin-top: 20px;
     }
 
@@ -57,9 +60,26 @@
     }
 
     .pesos input {
-      width: 60px;
+      width: 70px;
       padding: 5px;
       text-align: center;
+    }
+
+    /* Feedback visual quando salva */
+    .salvo {
+      border: 2px solid #4caf50 !important;
+      background: #e8f5e9;
+      color: #000;
+    }
+
+    /* Responsividade */
+    @media (max-width: 600px) {
+      .pesos {
+        flex-direction: column;
+      }
+      .pesos input {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -122,23 +142,27 @@
       }
     }
 
-   // Função para formatar e salvar o peso + ir para a próxima caixinha
-function formatarPeso(event, dia, exercicio, rep, input) {
-  if (event.key === "Enter") {
-    let valor = input.value.replace("kg", "").trim();
-    if (valor && !isNaN(valor)) {
-      input.value = valor + " kg";
-      localStorage.setItem(`${dia}-${exercicio}-rep${rep}`, input.value);
+    // Função para formatar e salvar o peso + ir para a próxima caixinha
+    function formatarPeso(event, dia, exercicio, rep, input) {
+      if (event.key === "Enter") {
+        let valor = input.value.replace("kg", "").trim();
+        if (valor && !isNaN(valor)) {
+          input.value = valor + " kg";
+          localStorage.setItem(`${dia}-${exercicio}-rep${rep}`, input.value);
 
-      // Pega a próxima caixinha dentro do mesmo exercício
-      const proximo = input.parentElement.querySelectorAll("input")[rep]; 
-      if (proximo) {
-        proximo.focus(); // move o cursor para a próxima
+          // Feedback visual
+          input.classList.add("salvo");
+          setTimeout(() => input.classList.remove("salvo"), 600);
+
+          // Pega a próxima caixinha dentro do mesmo exercício
+          const proximo = input.parentElement.querySelectorAll("input")[rep]; 
+          if (proximo) {
+            proximo.focus(); // move o cursor para a próxima
+          }
+        }
+        event.preventDefault(); // evita pular linha
       }
     }
-    event.preventDefault(); // evita pular linha
-  }
-}
 
     // Carrega o treino do dia inicial
     window.onload = carregarTreino;
