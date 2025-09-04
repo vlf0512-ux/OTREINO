@@ -93,3 +93,10 @@ select {
   font-size: 14px;
   margin: 0;  /* Removendo qualquer margem extra */
 }
+
+/* Feedback visual quando salva */
+.salvo {
+  border: 2px solid #4caf50 !important; /* borda verde */
+  background: #e8f5e9;                  /* fundo verdinho claro */
+  color: #000;                          /* texto preto pra contraste */
+}
