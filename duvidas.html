@@ -15,7 +15,7 @@
       text-align: center;
       font-size: 2.5rem;
       font-weight: 700;
-      background: linear-gradient(90deg, #eaebe9, #aaff3b);
+      background: linear-gradient(90deg, #d5ff3b, #aaff3b);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
@@ -51,7 +51,16 @@
   </style>
 </head>
 <body>
-  <h1>Guia de Exercícios</h1>
+<h1>Guia de Exercícios</h1>
+
+<!-- Botão para voltar -->
+<button id="btnvoltar">Voltar para Página Inicial</button>
+
+<script>
+  document.getElementById("btnvoltar").onclick = function() {
+    window.location.href = "treino.html"; // redireciona para a página inicial
+  };
+</script>
 
   <h2>Costas</h2>
   <ul>
@@ -117,5 +126,5 @@
     <li><a href="https://www.youtube.com/watch?v=XMkUtMtcOh0" target="_blank">Tríceps Francês</a></li>
     <li><a href="https://www.youtube.com/watch?v=M88Bt4MMpkI" target="_blank">Tríceps Na Polia</a></li>
   </ul>
-  </body>
+</body>
 </html>
