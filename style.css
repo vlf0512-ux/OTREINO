@@ -222,3 +222,58 @@ li button:hover {
     transform: translateY(0);
   }
 }
+@media (max-width: 480px) {
+
+  body {
+    align-items: stretch;
+  }
+
+  .container {
+    min-height: 100dvh;     /* altura real do celular */
+    padding: 16px;
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 15px;
+  }
+
+  button {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  select,
+  input[type="text"],
+  input[type="number"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  li {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+
+  .perfil-card {
+    padding: 12px;
+  }
+
+  .perfil-foto {
+    width: 52px;
+    height: 52px;
+  }
+
+  .agua-container {
+    padding: 12px;
+  }
+
+  #mensagemInicial {
+    padding: 18px;
+    font-size: 15px;
+  }
+}
