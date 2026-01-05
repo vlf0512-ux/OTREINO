@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Meu Perfil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h1>👤 Meu Perfil</h1>
+
+  <input type="text" id="nome" placeholder="Nome">
+  <input type="number" id="peso" placeholder="Peso (kg)">
+  <input type="number" id="altura" placeholder="Altura (cm)">
+  
+  <select id="objetivo">
+    <option value="">Objetivo</option>
+    <option>Hipertrofia</option>
+    <option>Emagrecimento</option>
+    <option>Condicionamento</option>
+  </select>
+
+  <input type="file" accept="image/*" onchange="salvarFoto(this)">
+  
+  <button onclick="salvarPerfil()">Salvar</button>
+
+  <img id="fotoPerfil" style="width:120px;border-radius:50%;display:none;">
+</div>
+
+<script src="perfil.js"></script>
+</body>
+</html>
