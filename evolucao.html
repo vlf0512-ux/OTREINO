@@ -1,25 +1,26 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <title>Minha Evolução</title>
-  <link rel="stylesheet" href="style.css">
+
+  <!-- ESSENCIAL PARA IPHONE -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="app">
 
-  <!-- Tela de login -->
-  <div id="login">
-    <h2>🔒 Proteção por senha</h2>
+  <!-- ===== LOGIN ===== -->
+  <div id="login" class="card login-card">
+    <h2>🔒 Acesso protegido</h2>
 
     <input
       type="password"
       id="senhaInput"
-      placeholder="Digite a senha"
+      placeholder="Digite sua senha"
       inputmode="numeric"
       pattern="[0-9]*"
       enterkeyhint="done"
@@ -27,25 +28,27 @@
     >
 
     <button onclick="verificarSenha()">Entrar</button>
-    <p id="erroSenha" style="color:#ff6b6b; display:none; margin-top:10px;">
-      Senha incorreta!
-    </p>
+
+    <p id="erroSenha">Senha incorreta</p>
   </div>
 
-  <!-- Conteúdo principal -->
+  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
   <div id="conteudo" style="display:none;">
     <h1>📅 Minha Evolução</h1>
+
     <div id="mesesContainer" class="meses-grid"></div>
   </div>
 
 </div>
 
-<!-- Modal para expandir imagem -->
+<!-- ===== MODAL ===== -->
 <div id="modal" class="modal" onclick="fecharModal()">
   <span class="close">&times;</span>
   <img class="modal-content" id="imgModal">
 </div>
 
+<!-- SCRIPT NO FINAL (OBRIGATÓRIO) -->
 <script src="evolucao.js"></script>
+
 </body>
 </html>
