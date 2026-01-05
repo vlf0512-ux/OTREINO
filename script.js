@@ -259,3 +259,28 @@ function agendarResetDiario() {
 
 // Chamar ao carregar a página
 agendarResetDiario();
+
+function carregarPerfilResumo() {
+  const perfil = JSON.parse(localStorage.getItem("perfil"));
+  if (!perfil || !perfil.nome) return;
+
+  document.getElementById("perfilResumo").style.display = "flex";
+  document.getElementById("perfilNome").textContent = `👤 ${perfil.nome}`;
+
+  let info = [];
+  if (perfil.objetivo) info.push(`🎯 ${perfil.objetivo}`);
+  if (perfil.peso) info.push(`⚖️ ${perfil.peso} kg`);
+  if (perfil.altura) info.push(`📏 ${perfil.altura} cm`);
+
+  document.getElementById("perfilInfo").textContent = info.join(" • ");
+
+  if (perfil.foto) {
+    const img = document.getElementById("perfilFoto");
+    img.src = perfil.foto;
+    img.style.display = "block";
+  }
+}
+window.onload = () => {
+  // código que você já tem
+  carregarPerfilResumo();
+};
