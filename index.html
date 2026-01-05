@@ -5,9 +5,6 @@
     <title>Controle de Treinos</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="apple-touch-icon" href="icon.png">
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -16,6 +13,16 @@
 <body>
 
 <div class="container">
+<button onclick="window.location.href='perfil.html'">
+  👤 Perfil
+</button>
+<div id="perfilResumo" class="perfil-card" style="display:none;">
+  <img id="perfilFoto" class="perfil-foto">
+  <div>
+    <strong id="perfilNome"></strong>
+    <p id="perfilInfo"></p>
+  </div>
+</div>
 
 
     <h1>Controle de Treinos</h1>
@@ -39,9 +46,7 @@
 <button onclick="window.location.href='evolucao.html'">Minha Evolução</button>
 
 
-    <p id="mensagemInicial">
-        ⬆️ Escolha um dia da semana para montar seu treino
-    </p>
+    
 
     <input type="text" id="nomeExercicio" placeholder="Nome do exercício">
     <button onclick="adicionarExercicio()">Adicionar exercício</button>
