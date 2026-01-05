@@ -1,7 +1,33 @@
 const dias = ["segunda", "terca", "quarta", "quinta", "sexta"];
+function getSemanaAtual() {
+    const hoje = new Date();
+
+    // ajusta para segunda-feira
+    const dia = hoje.getDay() || 7; // domingo = 7
+    hoje.setDate(hoje.getDate() - dia + 1);
+
+    const ano = hoje.getFullYear();
+    const primeiraSegunda = new Date(ano, 0, 1);
+    const diff = hoje - primeiraSegunda;
+    const semana = Math.ceil(diff / (7 * 24 * 60 * 60 * 1000));
+
+    return `${ano}-W${semana}`;
+}
+let semanaAtual = getSemanaAtual();
+
 let treinos = {};
 
 window.onload = () => {
+    const semanaSalva = localStorage.getItem("semanaAtual");
+
+if (semanaSalva !== semanaAtual) {
+    localStorage.setItem("semanaAtual", semanaAtual);
+
+    // aqui depois vamos resetar:
+    // - dias concluídos
+    // - água
+}
+
     treinos = JSON.parse(localStorage.getItem("treinos")) || {};
     dias.forEach(dia => {
         treinos[dia] ||= [];
@@ -11,6 +37,8 @@ window.onload = () => {
             ex.series.forEach(s => s.feito = false);
         });
     });
+    atualizarSelect();
+
 };
 
 
@@ -137,3 +165,97 @@ function atualizarContador(dia) {
 function salvar() {
     localStorage.setItem("treinos", JSON.stringify(treinos));
 }
+let diasFinalizados = JSON.parse(localStorage.getItem("diasFinalizados")) || {};
+
+function finalizarTreino(dia) {
+    if (!confirm("Marcar treino como concluído?")) return;
+
+    diasFinalizados[dia] = true;
+    salvarDias();
+    atualizarSelect();
+}
+
+function salvarDias() {
+    localStorage.setItem("diasFinalizados", JSON.stringify(diasFinalizados));
+}
+function atualizarSelect() {
+    const select = document.getElementById("dia");
+
+    [...select.options].forEach(opt => {
+        if (diasFinalizados[opt.value]) {
+            opt.style.backgroundColor = "#4CAF50";
+            opt.style.color = "#fff";
+        }
+    });
+}
+// Inicializar hidratação
+let agua = JSON.parse(localStorage.getItem("agua")) || 0;
+const aguaAtual = document.getElementById("aguaAtual");
+const aguaInicial = document.getElementById("aguaInicial");
+atualizarAgua();
+
+function adicionarAgua(valor) {
+  agua += valor;
+  salvarAgua();
+  atualizarAgua();
+}
+
+function resetAgua() {
+  if (!confirm("Deseja resetar a quantidade de água?")) return;
+  agua = 0;
+  salvarAgua();
+  atualizarAgua();
+}
+
+function atualizarAgua() {
+  aguaAtual.textContent = `${agua.toFixed(1)} L`;
+}
+
+function salvarAgua() {
+  localStorage.setItem("agua", JSON.stringify(agua));
+}
+
+// Mostrar/esconder água conforme o dia
+function mostrarTreino() {
+  const dia = document.getElementById("dia").value;
+
+  // esconder todos os dias
+  dias.forEach(d => {
+    const el = document.getElementById(d);
+    el.style.display = "none";
+    el.classList.remove("ativo");
+  });
+
+  if (!dia) {
+    // Nenhum dia selecionado → mostrar água
+    document.getElementById("mensagemInicial").style.display = "block";
+    aguaInicial.style.display = "block";
+    return;
+  }
+
+  // Quando escolher um dia → esconder água
+  aguaInicial.style.display = "none";
+  document.getElementById("mensagemInicial").style.display = "none";
+
+  const atual = document.getElementById(dia);
+  atual.style.display = "block";
+  atual.classList.add("ativo");
+  renderizarTreino(dia);
+}
+// Função para calcular quanto falta até a meia-noite
+function agendarResetDiario() {
+  const agora = new Date();
+  const proximoDia = new Date();
+  proximoDia.setHours(24, 0, 0, 0); // define 00:00 do próximo dia
+  const tempoRestante = proximoDia - agora;
+
+  setTimeout(() => {
+    agua = 0;
+    salvarAgua();
+    atualizarAgua();
+    agendarResetDiario(); // agenda o reset do próximo dia
+  }, tempoRestante);
+}
+
+// Chamar ao carregar a página
+agendarResetDiario();
