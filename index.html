@@ -5,18 +5,15 @@
     <title>Controle de Treinos</title>
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0f0f0f">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-<link rel="apple-touch-icon" href="C:\Users\vlf05\Downloads\ChatGPT Image 4 de jan. de 2026, 21_33_17.png">
-
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 </head>
 <body>
 
 <div class="container">
+
 
     <h1>Controle de Treinos</h1>
 
@@ -28,6 +25,16 @@
         <option value="quinta">Quinta</option>
         <option value="sexta">Sexta</option>
     </select>
+<div id="aguaInicial" class="agua-container">
+  <h2>💧 Hidratação</h2>
+  <p id="aguaAtual">0 L</p>
+  <button onclick="adicionarAgua(0.2)">+200ml</button>
+  <button onclick="adicionarAgua(0.5)">+500ml</button>
+  <button onclick="resetAgua()">Resetar</button>
+</div>
+
+<button onclick="window.location.href='evolucao.html'">Minha Evolução</button>
+
 
     <p id="mensagemInicial">
         ⬆️ Escolha um dia da semana para montar seu treino
@@ -39,27 +46,64 @@
     <!-- DIAS -->
     <div id="segunda" class="diaTreino">
         <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-        <ul></ul>
+        <ul></ul><div id="segunda" class="diaTreino">
+    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
+    <ul></ul>
+    <button onclick="finalizarTreino('segunda')" class="btn-finalizar">
+        Finalizar treino
+    </button>
+</div>
+
     </div>
 
     <div id="terca" class="diaTreino">
         <h2>Terça <span id="contador-terca" class="contador"></span></h2>
-        <ul></ul>
+        <ul></ul><div id="segunda" class="diaTreino">
+    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
+    <ul></ul>
+    <button onclick="finalizarTreino('terca')" class="btn-finalizar">
+        Finalizar treino
+    </button>
+</div>
+
     </div>
 
     <div id="quarta" class="diaTreino">
         <h2>Quarta <span id="contador-quarta" class="contador"></span></h2>
-        <ul></ul>
+        <ul></ul><div id="segunda" class="diaTreino">
+    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
+    <ul></ul>
+    <button onclick="finalizarTreino('quarta')" class="btn-finalizar">
+        Finalizar treino
+    </button>
+</div>
+
     </div>
 
     <div id="quinta" class="diaTreino">
         <h2>Quinta <span id="contador-quinta" class="contador"></span></h2>
         <ul></ul>
+        <div id="segunda" class="diaTreino">
+    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
+    <ul></ul>
+    <button onclick="finalizarTreino('quinta')" class="btn-finalizar">
+        Finalizar treino
+    </button>
+</div>
+
     </div>
 
     <div id="sexta" class="diaTreino">
         <h2>Sexta <span id="contador-sexta" class="contador"></span></h2>
         <ul></ul>
+        <div id="segunda" class="diaTreino">
+    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
+    <ul></ul>
+    <button onclick="finalizarTreino('sexta')" class="btn-finalizar">
+        Finalizar treino
+    </button>
+</div>
+
     </div>
 
 </div>
