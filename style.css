@@ -1,137 +1,244 @@
-body {
-  font-family: 'Poppins', sans-serif;
-}
-body {
-  background: linear-gradient(135deg, #4a4e55, #f8f9fc);
-  color: #474e48;
-}
-.treino {
-  background: rgba(250, 249, 252, 0.95);
-  padding: 20px;
-  border-radius: 15px;
-  margin-top: 20px;
-  box-shadow: 0 6px 15px rgba(233, 231, 231, 0.2);
-}
-input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #f1f3f7;
-  border-radius: 8px;
-  outline: none;
-  transition: 0.3s;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-input:focus {
-  border-color: #fcfcfd;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+body {
+    background-color: #0f0f0f;
+    color: #eaeaea;
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
-select {
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #2a5298;
-  background: rgb(56, 53, 53);
-  font-weight: bold;
+
+/* CARD CENTRAL */
+.container {
+    width: 100%;
+    max-width: 480px;
+    background: #161616;
+    margin-top: 30px;
+    padding: 16px;
+    border-radius: 8px;
 }
+
+/* TÍTULO */
 h1 {
-  text-align: center;
-  color: #fdfeff;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 14px;
 }
-input::placeholder {
-  color: #eeeeee; /* cinza mais escuro */
-  font-style: italic; /* deixa em itálico se quiser */
-}
+
+/* CAMPOS */
 label {
-  color: #edeff3; /* azul */
-  font-weight: bold;
-  font-size: 18px;
-}
-.exercicio {
-  margin-bottom: 15px;
-  padding: 8px;
-  background-color: #615f5f;
-  border-radius: 6px;
-}
-input {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #f9fafc;
-  border-radius: 8px;
-  outline: none;
-  background-color: #5c5959;  /* aqui você muda a cor do fundo */
-}
-select {
-  appearance: none;      /* remove a seta padrão (funciona na maioria) */
-  -webkit-appearance: none; /* Chrome/Safari */
-  -moz-appearance: none;    /* Firefox */
-  
-  background-color: #222;  /* fundo */
-  color: #fff;             /* cor do texto */
-  padding: 10px;
-  border: 2px solid #f1f2f5;
-  border-radius: 8px;
-  
-  /* adiciona espaço pro ícone */
-  padding-right: 30px;
-  
-  /* seta customizada (emoji ou SVG) */
-  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-}
-/* Estilo para as abas de kg */
-.kg-abas {
-  display: flex;
-  justify-content: space-between;
-  gap: 2px;  /* Reduzindo o espaço entre as séries */
+    font-size: 13px;
+    margin-bottom: 4px;
+    display: block;
 }
 
-.kg-abas input {
-  width: 18%;  /* Reduzindo o tamanho das caixas para as abas de série */
-  padding: 5px;
-  font-size: 14px;
-  margin: 0;  /* Removendo qualquer margem extra */
+select,
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 7px;
+    font-size: 13px;
+    margin-bottom: 8px;
+
+    background: #1f1f1f;
+    color: #fff;
+    border: 1px solid #333;
+    border-radius: 5px;
 }
 
-/* Feedback visual quando salva */
-
-}
-button#btnduvidas {
-  margin-top: 10px;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  background-color: #2e86de;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s;
+/* BOTÃO */
+button {
+    width: 100%;
+    padding: 8px;
+    font-size: 13px;
+    background: #2a2a2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-button#btnduvidas:hover {
-  background-color: #59ff30;
+button:hover {
+    background: #3a3a3a;
+}
+
+/* DIV DO TREINO */
+h2 {
+    font-size: 15px;
+    margin: 14px 0 6px;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    background: #1b1b1b;
+    padding: 8px;
+    margin-bottom: 6px;
+    border-radius: 6px;
+    font-size: 13px;
+}
+
+/* SÉRIES */
+li div {
+    margin-top: 6px;
+}
+
+li span {
+    background: #2a2a2a;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 4px;
+    cursor: pointer;
+}
+
+/* INPUT DE SÉRIE */
+li input[type="number"] {
+    width: 100px;
+    margin-top: 6px;
+}
+
+/* BOTÃO APAGAR */
+li button {
+    width: auto;
+    padding: 4px 6px;
+    font-size: 12px;
+    margin-top: 6px;
+    background: #3a1c1c;
+}
+
+li button:hover {
+    background: #552222;
+}
+
+/* MENSAGEM INICIAL */
+#mensagemInicial {
+    margin-top: 30px;
+    padding: 20px;
+    text-align: center;
+
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1.4;
+
+    color: #eaeaea;
+    background: #1f1f1f;
+    border: 2px dashed #333;
+    border-radius: 8px;
+}
+.diaTreino {
+    display: none; /* ESCONDE todos os dias por padrão */
+    padding: 15px;
+    background: #1b1b1b;
+    border-radius: 8px;
+    margin-top: 15px;
 }
 button {
-  display: block;
-  margin: 15px auto;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 8px;
-  background: #3c3c4d;
-  color: #baff3b;
-  cursor: pointer;
-  transition: 0.3s;
-}
-button:hover {
-  background: #57576d;
-  color: #fff176;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
 }
 
-.salvo {
-  border: 2px solid #4caf50 !important; /* borda verde */
-  background: #e8f5e9;                  /* fundo verdinho claro */
-  color: #000;                          /* texto preto pra contraste */
+button:hover {
+    background: #2e7d32;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+input, select {
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 6px rgba(76,175,80,0.4);
+}
+
+
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.diaTreino.ativo {
+    animation: aparecer 0.25s ease-out;
+}
+
+
+
+.serie.concluida {
+    opacity: 0.6;
+}
+
+.serie.concluida span {
+    text-decoration: line-through;
+}
+
+
+
+
+button {
+    cursor: pointer;
+}
+
+button.apagar {
+    background: #b71c1c;
+}
+
+button.apagar:hover {
+    background: #d32f2f;
+}
+
+
+.container {
+    max-width: 420px;
+    width: 100%;
+    margin: auto;
+    padding: 15px;
+}
+
+
+@media (max-width: 480px) {
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    input, select {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .serie {
+        font-size: 14px;
+    }
+}
+
+
+.serie span {
+    padding: 6px;
 }
