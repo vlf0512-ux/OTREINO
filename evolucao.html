@@ -27,15 +27,19 @@
       autofocus
     >
 
-    <button onclick="verificarSenha()">Entrar</button>
+    <button onclick="verificarSenha()">Entrar com senha</button>
+
+    <!-- FACE ID -->
+    <button onclick="loginComFaceID()" style="margin-top:8px;">
+      🔓 Entrar com Face ID
+    </button>
 
     <p id="erroSenha">Senha incorreta</p>
   </div>
 
-  <!-- ===== CONTEÚDO PRINCIPAL ===== -->
+  <!-- ===== CONTEÚDO ===== -->
   <div id="conteudo" style="display:none;">
     <h1>📅 Minha Evolução</h1>
-
     <div id="mesesContainer" class="meses-grid"></div>
   </div>
 
@@ -47,7 +51,7 @@
   <img class="modal-content" id="imgModal">
 </div>
 
-<!-- SCRIPT NO FINAL (OBRIGATÓRIO) -->
+<!-- SCRIPT NO FINAL -->
 <script src="evolucao.js"></script>
 
 </body>
