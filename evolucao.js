@@ -6,17 +6,28 @@ const meses = [
     "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"
 ];
 
-// Login
 function verificarSenha() {
-    const senha = document.getElementById("senhaInput").value;
+    const input = document.getElementById("senhaInput");
+    const erro = document.getElementById("erroSenha");
+    const senha = input.value;
+
     if (senha === senhaCorreta) {
         document.getElementById("login").style.display = "none";
         document.getElementById("conteudo").style.display = "block";
+        erro.style.display = "none";
         mostrarMeses();
     } else {
-        document.getElementById("erroSenha").style.display = "block";
+        erro.style.display = "block";
+        input.value = "";
+        input.focus();
+
+        // Vibração no celular
+        if (navigator.vibrate) {
+            navigator.vibrate(120);
+        }
     }
 }
+
 
 // Mostrar meses
 function mostrarMeses() {
@@ -96,3 +107,10 @@ function abrirModal(src) {
 function fecharModal() {
     modal.style.display = "none";
 }
+
+// Permitir Enter / Done para entrar
+document.getElementById("senhaInput").addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        verificarSenha();
+    }
+});
