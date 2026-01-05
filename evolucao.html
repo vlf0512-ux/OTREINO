@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Minha Evolução</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+
+    <!-- Tela de login -->
+    <div id="login">
+        <h2>🔒 Proteção por senha</h2>
+        <input type="password" id="senhaInput" placeholder="Digite a senha">
+        <button onclick="verificarSenha()">Entrar</button>
+        <p id="erroSenha" style="color:red; display:none;">Senha incorreta!</p>
+    </div>
+
+    <!-- Conteúdo principal -->
+    <div id="conteudo" style="display:none;">
+        <h1>📅 Minha Evolução</h1>
+        <div id="mesesContainer" class="meses-grid"></div>
+    </div>
+</div>
+
+<!-- Modal para expandir imagem -->
+<div id="modal" class="modal" onclick="fecharModal()">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <img class="modal-content" id="imgModal">
+</div>
+
+<script src="evolucao.js"></script>
+</body>
+</html>
