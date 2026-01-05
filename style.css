@@ -1,349 +1,224 @@
-/* ===== RESET ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* ===== BODY ===== */
 body {
-    background-color: #0f0f0f;
-    color: #eaeaea;
-    font-family: Arial, sans-serif;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 20px; /* espaço nas bordas em telas pequenas */
+  background-color: #0f0f0f;
+  color: #eaeaea;
+  font-family: Arial, sans-serif;
+
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
 }
 
-/* ===== CONTAINER ===== */
+/* ===== CONTAINER PRINCIPAL (APP) ===== */
 .container {
-    width: 100%;
-    max-width: 480px; /* aumenta a largura máxima */
-    margin: 0 auto;
-    padding: 16px;
-    background: #161616;
-    border-radius: 8px;
+  width: 100%;
+  max-width: 480px;
+
+  min-height: 100vh;              /* ocupa a tela inteira */
+  background: #161616;
+
+  padding: 20px 18px 32px;        /* MAIS respiro */
+  display: flex;
+  flex-direction: column;
+  gap: 18px;                      /* espaçamento automático entre blocos */
 }
 
-/* ===== TÍTULO ===== */
+/* ===== PERFIL ===== */
+.perfil-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: #1b1b1b;
+  padding: 14px;
+  border-radius: 10px;
+}
+
+.perfil-foto {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.perfil-card p {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+/* ===== TÍTULOS ===== */
 h1 {
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 14px;
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 10px 0;
 }
 
 /* ===== CAMPOS ===== */
 label {
-    font-size: 14px;
-    margin-bottom: 4px;
-    display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
 }
 
 select,
 input[type="text"],
 input[type="number"] {
-    width: 100%;
-    padding: 8px;
-    font-size: 14px;
-    margin-bottom: 8px;
-    background: #1f1f1f;
-    color: #fff;
-    border: 1px solid #333;
-    border-radius: 5px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+
+  background: #1f1f1f;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 8px;
 }
 
 /* ===== BOTÕES ===== */
 button {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    background: #2a2a2a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+
+  background: #2a2a2a;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
 }
 
 button:hover {
-    background: #2e7d32;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  background: #2e7d32;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
 }
 
 button:active {
-    transform: scale(0.97);
-}
-
-button.apagar {
-    background: #b71c1c;
-}
-
-button.apagar:hover {
-    background: #d32f2f;
-}
-
-/* ===== INPUT/SELECT FOCUS ===== */
-input:focus,
-select:focus {
-    outline: none;
-    border-color: #4caf50;
-    box-shadow: 0 0 6px rgba(76,175,80,0.4);
-}
-
-/* ===== DIV DO TREINO ===== */
-h2 {
-    font-size: 16px;
-    margin: 14px 0 6px;
-}
-
-ul {
-    list-style: none;
-}
-
-li {
-    background: #1b1b1b;
-    padding: 8px;
-    margin-bottom: 6px;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-li div {
-    margin-top: 6px;
-}
-
-li span {
-    background: #2a2a2a;
-    padding: 6px;
-    border-radius: 4px;
-    font-size: 13px;
-    margin-right: 4px;
-    cursor: pointer;
-}
-
-li input[type="number"] {
-    width: 100px;
-    margin-top: 6px;
-}
-
-li button {
-    width: auto;
-    padding: 4px 6px;
-    font-size: 12px;
-    margin-top: 6px;
-    background: #3a1c1c;
-}
-
-li button:hover {
-    background: #552222;
+  transform: scale(0.97);
 }
 
 /* ===== MENSAGEM INICIAL ===== */
 #mensagemInicial {
-    margin-top: 30px;
-    padding: 20px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: bold;
-    line-height: 1.4;
-    color: #eaeaea;
-    background: #1f1f1f;
-    border: 2px dashed #333;
-    border-radius: 8px;
+  margin-top: 20px;
+  padding: 24px;
+  text-align: center;
+
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+
+  background: #1f1f1f;
+  border: 2px dashed #333;
+  border-radius: 12px;
 }
 
-/* ===== DIAS DE TREINO ===== */
+/* ===== TREINOS ===== */
 .diaTreino {
-    display: none;
-    padding: 15px;
-    background: #1b1b1b;
-    border-radius: 8px;
-    margin-top: 15px;
+  display: none;
+  padding: 16px;
+  background: #1b1b1b;
+  border-radius: 12px;
 }
 
 .diaTreino.ativo {
-    animation: aparecer 0.25s ease-out;
+  animation: aparecer 0.25s ease-out;
+}
+
+/* ===== LISTA ===== */
+ul {
+  list-style: none;
+}
+
+li {
+  background: #202020;
+  padding: 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+/* ===== SÉRIES ===== */
+.serie {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.serie span {
+  background: #2a2a2a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.serie.concluida {
+  opacity: 0.6;
+}
+
+.serie.concluida span {
+  text-decoration: line-through;
+}
+
+/* ===== INPUT SÉRIE ===== */
+li input[type="number"] {
+  width: 140px;
+  margin-top: 10px;
+}
+
+/* ===== BOTÃO APAGAR ===== */
+li button {
+  width: auto;
+  padding: 6px 10px;
+  font-size: 13px;
+  background: #3a1c1c;
+}
+
+li button:hover {
+  background: #552222;
+}
+
+/* ===== HIDRATAÇÃO ===== */
+.agua-container {
+  margin-top: 10px;
+  padding: 16px;
+  background: #1b1b1b;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.agua-container button {
+  margin: 6px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: #4da6ff;
+  font-weight: bold;
+}
+
+.agua-container button:hover {
+  background-color: #3399ff;
 }
 
 /* ===== ANIMAÇÃO ===== */
 @keyframes aparecer {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===== SÉRIES ===== */
-.serie.concluida {
-    opacity: 0.6;
-}
-
-.serie.concluida span {
-    text-decoration: line-through;
-}
-
-/* ===== ÁGUA ===== */
-.agua-container {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.agua-container button {
-    margin: 5px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: none;
-    background-color: #4da6ff;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.agua-container button:hover {
-    background-color: #3399ff;
-}
-
-/* ===== MESES / EVOLUÇÃO ===== */
-.meses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 20px;
-    justify-items: center;
-    margin-top: 20px;
-}
-
-.mes-card {
-    background-color: #1f1f1f;
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
-}
-
-.mes-card:hover {
-    transform: translateY(-5px);
-}
-
-.mes-card h3 {
-    margin-bottom: 10px;
-    font-size: 18px;
-    color: #fff;
-}
-
-.mes-card input[type="file"] {
-    margin-top: 10px;
-    padding: 5px;
-    width: 100%;
-    border-radius: 6px;
-    border: 1px solid #555;
-    background-color: #2a2a2a;
-    color: #fff;
-    cursor: pointer;
-}
-
-.fotos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-.foto-wrapper {
-    position: relative;
-}
-
-.foto-wrapper img {
-    width: 80px;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #444;
-    cursor: pointer;
-}
-
-.foto-wrapper .btnDel {
-    position: absolute;
-    top: -5px;
-    right: -5px;
-    background-color: red;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 12px;
-    cursor: pointer;
-}
-
-/* ===== MODAL ===== */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-content {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 8px;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* ===== MEDIA QUERY PARA CELULAR ===== */
-@media (max-width: 480px) {
-
-    h1 {
-        font-size: 22px;
-    }
-
-    h2 {
-        font-size: 18px;
-    }
-
-    li {
-        font-size: 15px;
-    }
-
-    input, select {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    button {
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    .meses-grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 15px;
-    }
-
-    .mes-card h3 {
-        font-size: 16px;
-    }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
