@@ -3,117 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <title>Controle de Treinos</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
 
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="apple-touch-icon" href="icon.png">
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
 <body>
 
 <div class="container">
-<button onclick="window.location.href='perfil.html'">
-  👤 Perfil
-</button>
-<div id="perfilResumo" class="perfil-card" style="display:none;">
-  <img id="perfilFoto" class="perfil-foto">
-  <div>
-    <strong id="perfilNome"></strong>
-    <p id="perfilInfo"></p>
-  </div>
-</div>
-
 
     <h1>Controle de Treinos</h1>
 
+    <!-- SELECT DIA -->
     <select id="dia" onchange="mostrarTreino()">
-        <option value="">Selecione um dia</option>
+        <option value="">Inicio</option>
         <option value="segunda">Segunda</option>
         <option value="terca">Terça</option>
         <option value="quarta">Quarta</option>
         <option value="quinta">Quinta</option>
         <option value="sexta">Sexta</option>
     </select>
-<div id="aguaInicial" class="agua-container">
-  <h2>💧 Hidratação</h2>
-  <p id="aguaAtual">0 L</p>
-  <button onclick="adicionarAgua(0.2)">+200ml</button>
-  <button onclick="adicionarAgua(0.5)">+500ml</button>
-  <button onclick="resetAgua()">Resetar</button>
+
+    <!-- ================= INÍCIO ================= -->
+    <div id="inicio">
+
+     <div class="topo-app">
+
+    <h1>Controle de Treinos</h1>
+
+    <div id="perfilResumo"
+         class="perfil-card perfil-header"
+         onclick="window.location.href='perfil.html'"
+         style="display:none;">
+
+        <img id="perfilFoto" class="perfil-foto">
+
+        <div class="perfil-texto">
+            <strong id="perfilNome"></strong>
+            <p id="perfilInfo"></p>
+        </div>
+
+    </div>
+
 </div>
 
-<button onclick="window.location.href='evolucao.html'">Minha Evolução</button>
 
+        <!-- HIDRATAÇÃO -->
+        <div id="aguaInicial" class="agua-container">
+            <h2>💧 Hidratação</h2>
+            <p id="aguaAtual">0 L</p>
+            <button onclick="adicionarAgua(0.2)">+200ml</button>
+            <button onclick="adicionarAgua(0.5)">+500ml</button>
+            <button onclick="resetAgua()">Resetar</button>
+        </div>
 
-    
+        <!-- EVOLUÇÃO -->
+        <button onclick="window.location.href='evolucao.html'">
+            Minha Evolução
+        </button>
 
+        
+        
+
+    </div>
+    <!-- ================= FIM INÍCIO ================= -->
+<!-- ADICIONAR EXERCÍCIO -->
+<div id="boxAdicionar" style="display:none;">
     <input type="text" id="nomeExercicio" placeholder="Nome do exercício">
     <button onclick="adicionarExercicio()">Adicionar exercício</button>
+</div>
 
-    <!-- DIAS -->
-    <div id="segunda" class="diaTreino">
+
+    <!-- ================= DIAS DE TREINO ================= -->
+
+    <!-- SEGUNDA -->
+    <div id="segunda" class="diaTreino" style="display:none;">
         <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-        <ul></ul><div id="segunda" class="diaTreino">
-    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-    <ul></ul>
-    <button onclick="finalizarTreino('segunda')" class="btn-finalizar">
-        Finalizar treino
-    </button>
-</div>
-
+        <ul></ul>
+        <button onclick="finalizarTreino('segunda')" class="btn-finalizar">
+            Finalizar treino
+        </button>
     </div>
 
-    <div id="terca" class="diaTreino">
+    <!-- TERÇA -->
+    <div id="terca" class="diaTreino" style="display:none;">
         <h2>Terça <span id="contador-terca" class="contador"></span></h2>
-        <ul></ul><div id="segunda" class="diaTreino">
-    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-    <ul></ul>
-    <button onclick="finalizarTreino('terca')" class="btn-finalizar">
-        Finalizar treino
-    </button>
-</div>
-
+        <ul></ul>
+        <button onclick="finalizarTreino('terca')" class="btn-finalizar">
+            Finalizar treino
+        </button>
     </div>
 
-    <div id="quarta" class="diaTreino">
+    <!-- QUARTA -->
+    <div id="quarta" class="diaTreino" style="display:none;">
         <h2>Quarta <span id="contador-quarta" class="contador"></span></h2>
-        <ul></ul><div id="segunda" class="diaTreino">
-    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-    <ul></ul>
-    <button onclick="finalizarTreino('quarta')" class="btn-finalizar">
-        Finalizar treino
-    </button>
-</div>
-
+        <ul></ul>
+        <button onclick="finalizarTreino('quarta')" class="btn-finalizar">
+            Finalizar treino
+        </button>
     </div>
 
-    <div id="quinta" class="diaTreino">
+    <!-- QUINTA -->
+    <div id="quinta" class="diaTreino" style="display:none;">
         <h2>Quinta <span id="contador-quinta" class="contador"></span></h2>
         <ul></ul>
-        <div id="segunda" class="diaTreino">
-    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-    <ul></ul>
-    <button onclick="finalizarTreino('quinta')" class="btn-finalizar">
-        Finalizar treino
-    </button>
-</div>
-
+        <button onclick="finalizarTreino('quinta')" class="btn-finalizar">
+            Finalizar treino
+        </button>
     </div>
 
-    <div id="sexta" class="diaTreino">
+    <!-- SEXTA -->
+    <div id="sexta" class="diaTreino" style="display:none;">
         <h2>Sexta <span id="contador-sexta" class="contador"></span></h2>
         <ul></ul>
-        <div id="segunda" class="diaTreino">
-    <h2>Segunda <span id="contador-segunda" class="contador"></span></h2>
-    <ul></ul>
-    <button onclick="finalizarTreino('sexta')" class="btn-finalizar">
-        Finalizar treino
-    </button>
-</div>
-
+        <button onclick="finalizarTreino('sexta')" class="btn-finalizar">
+            Finalizar treino
+        </button>
     </div>
 
 </div>
